@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quote Challenge — Out of This World · Coming 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<style>
+/* ===== WALLPAPER / LOOK — CHANGE IT HERE =====
+   --wallpaper: the big picture behind everything (moon Earthrise)
+   --accent:    the gold lettering
+   --glow:     the soft blue starlight
+   Change only these three lines to change the whole look. */
+:root{--wallpaper:url('assets/moon-earthrise-wide.jpg');--accent:#e8c15a;--glow:#9fc4ff}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:#02030a;color:#e8e6da;font-family:'Cormorant Garamond',Georgia,serif;font-size:19px;line-height:1.55;overflow-x:hidden}
+h1,h2,h3,.gold{font-family:'Cinzel',serif;color:var(--accent);letter-spacing:.12em}
+a{color:var(--accent)}
+/* starfield */
+#stars{position:fixed;inset:0;z-index:0;pointer-events:none}
+.star{position:absolute;background:#fff;border-radius:50%;animation:tw 3s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.15}50%{opacity:1}}
+/* hero */
+.hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 18px 120px;background:linear-gradient(to bottom,rgba(2,3,10,.25),rgba(2,3,10,.55) 55%,#02030a),var(--wallpaper) center 30%/cover no-repeat}
+.hero .eyebrow{letter-spacing:.45em;font-size:14px;color:var(--glow);text-transform:uppercase}
+.hero h1{font-size:clamp(38px,8vw,84px);margin:14px 0 4px;line-height:1.05;text-shadow:0 0 30px rgba(159,196,255,.55)}
+.hero h1 span{display:block;font-size:.52em;letter-spacing:.28em}
+.hero .by{font-style:italic;font-size:22px;color:#d8d2b8}
+.coming{margin-top:26px;border:1px solid var(--accent);padding:10px 26px;letter-spacing:.35em;font-family:'Cinzel',serif;color:var(--accent);font-size:17px;background:rgba(2,3,10,.55)}
+.hero p.lead{max-width:640px;font-size:22px;font-style:italic;margin-top:26px}
+.ship{width:min(680px,92vw);border-radius:14px;margin-top:34px;box-shadow:0 0 60px rgba(159,196,255,.35);animation:drift 14s ease-in-out infinite}
+@keyframes drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.scrollhint{margin-top:30px;color:#9aa3b8;letter-spacing:.3em;font-size:13px;text-transform:uppercase;animation:tw 2.5s infinite}
+/* sections */
+section{position:relative;z-index:1;max-width:980px;margin:0 auto;padding:70px 18px}
+section h2{text-align:center;font-size:clamp(26px,5vw,40px);margin:0 0 8px}
+section .sub{text-align:center;font-style:italic;color:#b9b4a0;max-width:640px;margin:0 auto 34px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+.card{background:rgba(8,12,28,.78);border:1px solid rgba(232,193,90,.35);border-radius:14px;overflow:hidden}
+.card img{width:100%;display:block;aspect-ratio:4/3;object-fit:cover;object-position:center}
+.card.tall img{aspect-ratio:3/4}
+.card .body{padding:18px 20px 22px}
+.card h3{margin:0 0 6px;font-size:19px}
+.card p{margin:0;color:#cfcaba}
+/* signal line — quotes drifting in and out, like a radio from far away */
+#signal{position:relative;z-index:1;text-align:center;padding:30px 18px 50px;min-height:170px}
+#signal .label{letter-spacing:.4em;font-size:12px;color:var(--glow);text-transform:uppercase}
+#signalLine{font-size:clamp(24px,4.5vw,38px);font-style:italic;color:#f2ead0;max-width:760px;margin:18px auto 6px;transition:opacity 1.2s}
+#signalFrom{color:#9aa3b8;font-style:italic}
+/* games coming soon */
+.games{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.game{position:relative;background:rgba(8,12,28,.85);border:1px solid rgba(232,193,90,.45);border-radius:14px;overflow:hidden;text-align:center;padding-bottom:24px}
+.game img{width:100%;display:block;aspect-ratio:16/10;object-fit:cover}
+.game h3{font-size:24px;margin:18px 0 4px}
+.game p{color:#cfcaba;padding:0 20px;margin:0 0 14px}
+.soon{display:inline-block;border:1px solid var(--accent);padding:8px 20px;letter-spacing:.3em;font-family:'Cinzel',serif;font-size:14px;color:var(--accent)}
+/* mystery row */
+.mystery{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;align-items:stretch}
+.mystery figure{margin:0;background:rgba(8,12,28,.78);border:1px solid rgba(159,196,255,.3);border-radius:14px;overflow:hidden}
+.mystery img{width:100%;display:block}
+.mystery figcaption{padding:14px 18px 18px;font-style:italic;color:#cfcaba}
+/* footer */
+footer{position:relative;z-index:1;text-align:center;padding:50px 18px 70px;border-top:1px solid rgba(232,193,90,.25)}
+footer img{width:110px;border-radius:16px}
+footer p{color:#9aa3b8}
+.moonband{position:relative;z-index:1;height:220px;background:url('assets/moon-earthrise-tall.jpg') center 70%/cover no-repeat;opacity:.9}
+</style>
+</head>
+<body>
+<div id="stars" aria-hidden="true"></div>
+
+<header class="hero">
+  <div class="eyebrow">Welcome to</div>
+  <h1>QUOTE CHALLENGE<br><span>OUT OF THIS WORLD</span></h1>
+  <div class="by">By: QC Challenger</div>
+  <div class="coming">COMING&nbsp;·&nbsp;2027</div>
+  <p class="lead">Something is coming. Not a flat wall that says “here, do this.”<br>An atmosphere. A place you step into.<br>You can feel it, can’t you?</p>
+  <img class="ship" src="assets/enterprise.jpg" alt="A starship drifting through the stars">
+  <div class="scrollhint">↓ &nbsp;Keep going — it’s out there&nbsp; ↓</div>
+</header>
+
+<div id="signal">
+  <div class="label">— A signal, drifting in from far away —</div>
+  <div id="signalLine">“Everybody’s laughing (Ooh)<br>Everybody’s happy (Ooh)”</div>
+  <div id="signalFrom">— heard somewhere out in the dark</div>
+</div>
+
+<section>
+  <h2>THREE STOPS ON THE WAY OUT</h2>
+  <p class="sub">The third theater isn’t a room. It’s a journey. First the Moon. Then further. Then further still.</p>
+  <div class="cards">
+    <div class="card tall">
+      <img src="assets/moon-earthrise-tall.jpg" alt="Earth rising over the grey surface of the Moon">
+      <div class="body"><h3>THE MOON</h3><p>Grey dust under your feet. Earth hanging in a black sky, blue and quiet. This is where it starts.</p></div>
+    </div>
+    <div class="card">
+      <img src="assets/enterprise.jpg" alt="A starship among the stars">
+      <div class="body"><h3>DEEP SPACE</h3><p>No walls. No ceiling. Just stars in every direction, and a ship that keeps going. The final frontier, Captain.</p></div>
+    </div>
+    <div class="card">
+      <img src="assets/powertrain.jpg" alt="A great train rolling through storm and lightning">
+      <div class="body"><h3>THE LONG HAUL</h3><p>Some journeys don’t hurry. Storm, lightning, sparks on the track — and the train keeps rolling anyway.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>ON OUR WAY HOME</h2>
+  <p class="sub">Two of us, riding nowhere, spending someone’s hard-earned pay. You and me, Sunday driving. Not arriving — on our way back home. We’re on our way home. We’re going home.</p>
+  <div class="cards">
+    <div class="card">
+      <img src="assets/pygmy-sunday-driving.jpg" alt="A small car driving a winding road through the stars, under the words Pygmy by Charles Hawtrey and the Deaf Aids">
+      <div class="body"><h3>SUNDAY DRIVING</h3><p>Phase one, in which Doris gets her oats. A little car, a winding road through the stars, and nowhere to be but home.</p></div>
+    </div>
+    <div class="card">
+      <img src="assets/galaxy-laughing.jpg" alt="A starry galaxy with the words Everybody’s laughing, Everybody’s happy">
+      <div class="body"><h3>EVERYBODY’S LAUGHING</h3><p>Everybody’s happy. Out here, under all those stars, the whole crowd is cheering at once.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>ONE PLAYER · TWO PLAYER</h2>
+  <p class="sub">They’re coming too — built all by themselves, each one its own game. Not here yet. When they’re ready, they’ll be waiting for you.</p>
+  <div class="games">
+    <div class="game">
+      <img src="assets/one-player-black.jpg" alt="Quote Challenge One Player, black glass">
+      <h3>ONE PLAYER</h3>
+      <p>Just you, the quotes, and the dark. Your game, your pace, your score to chase.</p>
+      <span class="soon">COMING 2027</span>
+    </div>
+    <div class="game">
+      <img src="assets/moon-earthrise-wide.jpg" alt="Earth rising over the Moon">
+      <h3>TWO PLAYER</h3>
+      <p>Two players, one sky. Bring someone with you — the stars are better shared.</p>
+      <span class="soon">COMING 2027</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>SOMETHING OUT THERE IS WATCHING</h2>
+  <p class="sub">Not everything out here wants to be seen clearly. Some things you only catch out of the corner of your eye.</p>
+  <div class="mystery">
+    <figure>
+      <img src="assets/challenger-shadow.jpg" alt="A figure in shadow, mostly hidden in the dark">
+      <figcaption>The Challenger. Half in the dark, as always. He built this place — he’s not telling you everything about it yet.</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/signal-green.jpg" alt="A strange green signal in lines and dashes on black">
+      <figcaption>A signal, in green, on black. It keeps repeating. Can you read it? Nobody’s going to tell you what it says.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="moonband" aria-hidden="true"></div>
+
+<footer>
+  <img src="assets/qc-bug.jpg" alt="The QC Bug, Quote Challenge’s original mascot">
+  <p class="gold" style="font-size:20px;margin:14px 0 4px">QUOTE CHALLENGE</p>
+  <p>Indoor Theater &nbsp;·&nbsp; Drive-In Theater &nbsp;·&nbsp; Out of This World<br>
+  Coming 2027. No date. Just coming.<br>
+  <a href="https://jtack6769.github.io/Quote_challenge/">← Back to the main Quote Challenge site</a></p>
+</footer>
+
+<script>
+// Twinkling stars
+(function(){
+  var box=document.getElementById('stars');
+  for(var i=0;i<120;i++){
+    var s=document.createElement('span');s.className='star';
+    var sz=(Math.random()*2+1).toFixed(1);
+    s.style.width=sz+'px';s.style.height=sz+'px';
+    s.style.left=(Math.random()*100)+'%';s.style.top=(Math.random()*100)+'%';
+    s.style.animationDelay=(Math.random()*3)+'s';s.style.animationDuration=(2+Math.random()*3)+'s';
+    box.appendChild(s);
+  }
+})();
+// The signal — quotes drift in, fade, drift out. No answers given.
+var signals=[
+  ['“Everybody’s laughing (Ooh)<br>Everybody’s happy (Ooh)”','— heard somewhere out in the dark'],
+  ['“Two of us riding nowhere,<br>spending someone’s hard earned pay”','— Sunday driving'],
+  ['“We’re on our way home.<br>We’re going home.”','— not arriving, on our way back home'],
+  ['“Space: the final frontier.”','— Star Trek'],
+  ['“That’s one small step for man,<br>one giant leap for mankind.”','— Neil Armstrong, the Moon, 1969'],
+  ['“Houston, we have a problem.”','— Apollo 13'],
+  ['“To boldly go where no one<br>has gone before.”','— Star Trek']
+];
+var n=0,line=document.getElementById('signalLine'),from=document.getElementById('signalFrom');
+setInterval(function(){
+  line.style.opacity=0;from.style.opacity=0;
+  setTimeout(function(){
+    n=(n+1)%signals.length;
+    line.innerHTML=signals[n][0];from.textContent=signals[n][1];
+    line.style.opacity=1;from.style.opacity=1;
+  },1200);
+},6000);
+</script>
+</body>
+</html>
